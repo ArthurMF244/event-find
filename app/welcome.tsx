@@ -1,13 +1,15 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { Link } from "expo-router";
 
 export default function WelcomeScreen() {
   return (
     <View style={styles.container}>
-      {/* Logo / Ícone */}
-      <View style={styles.logo}>
-        <Text style={styles.logoText}>🎟️</Text>
+      {/* Ícone ou logo */}
+      <View style={styles.logoContainer}>
+        <View style={styles.logo}>
+          <Text style={styles.logoText}>🎟️</Text>
+        </View>
       </View>
 
       {/* Título */}
@@ -18,7 +20,7 @@ export default function WelcomeScreen() {
         Encontre os melhores eventos perto de você {"\n"} e nunca perca uma diversão!
       </Text>
 
-      {/* Botões */}
+      {/* Botões de login social */}
       <TouchableOpacity style={styles.buttonGoogle}>
         <Text style={styles.buttonText}>Entrar com Google</Text>
       </TouchableOpacity>
@@ -27,16 +29,16 @@ export default function WelcomeScreen() {
         <Text style={styles.buttonText}>Entrar com Facebook</Text>
       </TouchableOpacity>
 
+      {/* Criar conta */}
       <Link href="/login" asChild>
         <TouchableOpacity style={styles.buttonOutline}>
           <Text style={styles.buttonOutlineText}>Criar uma conta</Text>
         </TouchableOpacity>
       </Link>
 
-      {/* Termos */}
+      {/* Termos de serviço */}
       <Text style={styles.footerText}>
-        Ao continuar, você concorda com nossos {"\n"} 
-        <Text style={styles.link}>Termos de Serviço</Text>
+        Ao continuar, você concorda com nossos {"\n"} <Text style={styles.link}>Termos de Serviço</Text>
       </Text>
     </View>
   );
@@ -50,6 +52,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 24,
   },
+  logoContainer: {
+    marginBottom: 24,
+  },
   logo: {
     width: 80,
     height: 80,
@@ -57,7 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#7b61ff",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 24,
   },
   logoText: {
     fontSize: 32,
