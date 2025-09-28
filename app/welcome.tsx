@@ -1,45 +1,50 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-import { Link } from "expo-router";
+import * as Location from "expo-location";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function WelcomeScreen() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const handleLocationPermission = async () => {
+    setLoading(true);
+    let { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status !== "granted") {
+      alert("Permissão de localização é necessária para continuar.");
+      setLoading(false);
+      return;
+    }
+
+    // Se permitido, redireciona para a Home
+    router.replace("/(tabs)/home");
+  };
+
   return (
     <View style={styles.container}>
-      {/* Ícone ou logo */}
-      <View style={styles.logoContainer}>
-        <View style={styles.logo}>
-          <Text style={styles.logoText}>🎟️</Text>
-        </View>
-      </View>
+      {/* Logo */}
+      <Image
+        source={require("../assets/images/logo.png")}
+        style={styles.logo}
+      />
 
-      {/* Título */}
-      <Text style={styles.title}>Bem-vindo ao EventFind</Text>
-
-      {/* Subtítulo */}
+      {/* Texto explicativo */}
+      <Text style={styles.title}>Bem-vindo ao EventFind 🎉</Text>
       <Text style={styles.subtitle}>
-        Encontre os melhores eventos perto de você {"\n"} e nunca perca uma diversão!
+        Ative sua localização para encontrar eventos perto de você.
       </Text>
 
-      {/* Botões de login social */}
-      <TouchableOpacity style={styles.buttonGoogle}>
-        <Text style={styles.buttonText}>Entrar com Google</Text>
+      {/* Botão */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleLocationPermission}
+        disabled={loading}
+      >
+        <Text style={styles.buttonText}>
+          {loading ? "Ativando..." : "Permitir Localização"}
+        </Text>
       </TouchableOpacity>
-
-      <TouchableOpacity style={styles.buttonFacebook}>
-        <Text style={styles.buttonText}>Entrar com Facebook</Text>
-      </TouchableOpacity>
-
-      {/* Criar conta */}
-      <Link href="/(tabs)" asChild>
-        <TouchableOpacity style={styles.buttonOutline}>
-          <Text style={styles.buttonOutlineText}>Criar uma conta</Text>
-        </TouchableOpacity>
-      </Link>
-
-      {/* Termos de serviço */}
-      <Text style={styles.footerText}>
-        Ao continuar, você concorda com nossos {"\n"} <Text style={styles.link}>Termos de Serviço</Text>
-      </Text>
     </View>
   );
 }
@@ -47,79 +52,37 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 24,
-  },
-  logoContainer: {
-    marginBottom: 24,
+    alignItems: "center",
+    padding: 24,
+    backgroundColor: "#fff",
   },
   logo: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: "#7b61ff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logoText: {
-    fontSize: 32,
-    color: "#fff",
+    width: 120,
+    height: 120,
+    marginBottom: 32,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 12,
+    marginBottom: 8,
     textAlign: "center",
   },
   subtitle: {
     fontSize: 16,
     color: "#666",
+    marginBottom: 24,
     textAlign: "center",
-    marginBottom: 32,
   },
-  buttonGoogle: {
-    backgroundColor: "#7b61ff",
-    paddingVertical: 14,
+  button: {
+    backgroundColor: "#4CAF50",
+    paddingHorizontal: 24,
+    paddingVertical: 12,
     borderRadius: 8,
-    width: "100%",
-    marginBottom: 12,
-  },
-  buttonFacebook: {
-    backgroundColor: "#7b61ff",
-    paddingVertical: 14,
-    borderRadius: 8,
-    width: "100%",
-    marginBottom: 12,
   },
   buttonText: {
     color: "#fff",
-    textAlign: "center",
-    fontWeight: "600",
     fontSize: 16,
-  },
-  buttonOutline: {
-    borderWidth: 1,
-    borderColor: "#7b61ff",
-    paddingVertical: 14,
-    borderRadius: 8,
-    width: "100%",
-    marginBottom: 24,
-  },
-  buttonOutlineText: {
-    color: "#7b61ff",
-    textAlign: "center",
-    fontWeight: "600",
-    fontSize: 16,
-  },
-  footerText: {
-    fontSize: 12,
-    color: "#777",
-    textAlign: "center",
-  },
-  link: {
-    color: "#7b61ff",
-    fontWeight: "600",
+    fontWeight: "bold",
   },
 });
