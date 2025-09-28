@@ -1,6 +1,5 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
@@ -16,18 +15,48 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
       }}>
+      
+      {/* 🏠 Início */}
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Início',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={24} name="house.fill" color={color} />
+          ),
         }}
       />
+
+      {/* 🧭 Descobrir */}
       <Tabs.Screen
-        name="explore"
+        name="discover"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Descobrir',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={24} name="compass.fill" color={color} />
+          ),
+        }}
+      />
+
+      {/* 📅 Ingressos */}
+      <Tabs.Screen
+        name="tickets"
+        options={{
+          title: 'Ingressos',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={24} name="calendar" color={color} />
+          ),
+        }}
+      />
+
+      {/* 👤 Perfil */}
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Perfil',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={24} name="person.fill" color={color} />
+          ),
         }}
       />
     </Tabs>
