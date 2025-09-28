@@ -30,7 +30,7 @@ export default function WelcomeScreen() {
       </TouchableOpacity>
 
       {/* Criar conta */}
-      <Link href="/login" asChild>
+      <Link href="/(tabs)" asChild>
         <TouchableOpacity style={styles.buttonOutline}>
           <Text style={styles.buttonOutlineText}>Criar uma conta</Text>
         </TouchableOpacity>
