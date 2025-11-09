@@ -44,13 +44,14 @@ export default function ProfileScreen() {
     };
 
     carregarPerfil();
-  }, []);
+  }, [router]);
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
       router.replace("/"); // volta pra tela inicial ou login
     } catch (error) {
+      console.error("Erro ao realizar logout:", error);
       Alert.alert("Erro ao sair", "Não foi possível desconectar.");
     }
   };
