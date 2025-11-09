@@ -31,7 +31,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao EventFind</Text>
+      <Text style={styles.title}>Bem-vindo ao GoEvent</Text>
       <Text style={styles.subtitle}>
         Encontre os melhores eventos perto de você {"\n"} e nunca perca uma diversão!
       </Text>

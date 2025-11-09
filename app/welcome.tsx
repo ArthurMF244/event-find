@@ -30,7 +30,7 @@ export default function WelcomeScreen() {
       />
 
       {/* Texto explicativo */}
-      <Text style={styles.title}>Bem-vindo ao EventFind 🎉</Text>
+      <Text style={styles.title}>Bem-vindo ao GoEvent 🎉</Text>
       <Text style={styles.subtitle}>
         Ative sua localização para encontrar eventos perto de você.
       </Text>
