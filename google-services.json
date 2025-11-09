@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "544862979811",
-    "project_id": "event-find",
-    "storage_bucket": "event-find.firebasestorage.app"
+    "project_id": "goevent",
+    "storage_bucket": "goevent.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:544862979811:android:37467d774beb448d4be7d6",
         "android_client_info": {
-          "package_name": "com.eventfind.app"
+          "package_name": "com.goevent.app"
         }
       },
       "oauth_client": [],

@@ -1,18 +1,18 @@
 {
   "expo": {
-    "name": "event-find",
-    "slug": "event-find",
+    "name": "GoEvent",
+    "slug": "goevent",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "eventfind",
+    "scheme": "goevent",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.eventfind.app",
+      "package": "com.goevent.app",
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
