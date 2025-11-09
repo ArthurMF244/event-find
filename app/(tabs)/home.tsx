@@ -44,7 +44,7 @@ export default function HomeScreen() {
       {/* Cabeçalho com botão de adicionar evento */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.title}>EventFind 🎉</Text>
+          <Text style={styles.title}>GoEvent 🎉</Text>
           <Text style={styles.subtitle}>Descubra eventos incríveis perto de você</Text>
         </View>
 
